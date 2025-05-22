@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,6 +23,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 
@@ -104,6 +107,14 @@ public class PagoController {
         String codigoEstudiante) throws IOException {
             return pagoService.savePago(file, cantidad, type, date, codigoEstudiante);
     }
+
+    @PostMapping("/agregarEstudiante")
+    public ResponseEntity<Estudiante> agregarEstudiante(@RequestBody Estudiante estudiante) {
+        Estudiante response = estudianteRepository.save(estudiante);
+        return ResponseEntity.ok(response);
+    }
+    
+
     //Metodo para descargar un archivo de pago
     //Método que lista los pagos segun su tipo (EFECTIVO, CHEQUE, TRANSFERENCIA)
     @GetMapping(value = "pagoFile{pagoId}", produces = MediaType.APPLICATION_PDF_VALUE)

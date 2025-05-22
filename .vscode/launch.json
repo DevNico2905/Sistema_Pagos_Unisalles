@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SistemaPagosBackendUnisalleApplication<sistema-pagos-backend-unisalle>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.systempaymentsunisalle.sistema_pagos_backend_unisalle.SistemaPagosBackendUnisalleApplication",
+            "projectName": "sistema-pagos-backend-unisalle",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

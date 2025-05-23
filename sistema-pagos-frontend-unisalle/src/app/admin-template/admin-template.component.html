@@ -10,7 +10,7 @@
   <button mat-button class="toolbar-element" routerLink="/admin/home" >Home</button>
   <button mat-button class="toolbar-element" routerLink="/admin/profile" >Perfil</button>
 
-  <button mat-button [matMenuTriggerFor] = "importMenu" class="toolbar-element">
+  <button *ngIf="authService.roles.includes('ADMIN')" mat-button [matMenuTriggerFor] = "importMenu" class="toolbar-element">
     <mat-icon iconPositionEnd>keyboard_arrow_down></mat-icon>
     Importar
   </button>

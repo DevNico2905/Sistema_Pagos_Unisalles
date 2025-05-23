@@ -9,15 +9,19 @@ import { EstudiantesComponent } from './estudiantes/estudiantes.component';
 import { PagosComponent } from './pagos/pagos.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AdminTemplateComponent } from './admin-template/admin-template.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AuthorizationGuard } from './guards/authorization.guard';
 
 const routes: Routes = [
   {path: "", component:LoginComponent},
   {path:"login", component:LoginComponent},
-  {path: "admin", component:AdminTemplateComponent, children:[
+  {path: "admin", component:AdminTemplateComponent,
+    canActivate:[AuthGuard],
+    children:[
     {path:"home", component:HomeComponent},
     {path:"profile", component:ProfileComponent},
-    {path:"loadEstudiantes", component:LoadEstudiantesComponent},
-    {path:"loadPagos", component:LoadPagosComponent},
+    {path:"loadEstudiantes", component:LoadEstudiantesComponent, canActivate:[AuthorizationGuard], data:{roles:['ADMIN']}},
+    {path:"loadPagos", component:LoadPagosComponent, canActivate:[AuthorizationGuard], data:{roles:['ADMIN']}},
     {path:"dashboard", component:DashboardComponent},
     {path:"estudiantes", component:EstudiantesComponent},
     {path:"pagos", component:PagosComponent}

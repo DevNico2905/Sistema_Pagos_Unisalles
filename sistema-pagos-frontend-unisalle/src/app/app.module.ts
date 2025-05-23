@@ -19,6 +19,10 @@ import { PagosComponent } from './pagos/pagos.component';
 import { EstudiantesComponent } from './estudiantes/estudiantes.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatCardModule} from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +46,10 @@ import {MatCardModule} from '@angular/material/card';
     MatMenuModule,
     MatSidenavModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

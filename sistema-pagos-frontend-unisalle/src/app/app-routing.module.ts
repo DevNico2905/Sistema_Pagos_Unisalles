@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -8,16 +8,20 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { EstudiantesComponent } from './estudiantes/estudiantes.component';
 import { PagosComponent } from './pagos/pagos.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AdminTemplateComponent } from './admin-template/admin-template.component';
 
 const routes: Routes = [
-  {path:"home", component:HomeComponent},
-  {path:"profile", component:ProfileComponent},
+  {path: "", component:LoginComponent},
   {path:"login", component:LoginComponent},
-  {path:"loadEstudiantes", component:LoadEstudiantesComponent},
-  {path:"loadPagos", component:LoadPagosComponent},
-  {path:"dashboard", component:DashboardComponent},
-  {path:"estudiantes", component:EstudiantesComponent},
-  {path:"pagos", component:PagosComponent}
+  {path: "admin", component:AdminTemplateComponent, children:[
+    {path:"home", component:HomeComponent},
+    {path:"profile", component:ProfileComponent},
+    {path:"loadEstudiantes", component:LoadEstudiantesComponent},
+    {path:"loadPagos", component:LoadPagosComponent},
+    {path:"dashboard", component:DashboardComponent},
+    {path:"estudiantes", component:EstudiantesComponent},
+    {path:"pagos", component:PagosComponent}
+  ]},
 ];
 
 @NgModule({

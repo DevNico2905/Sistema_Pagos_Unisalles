@@ -4,7 +4,7 @@ export interface Estudiante {
   codigo: string,
   nombre: string,
   apellido: string,
-  programaId: string,
+  programId: string,
   foto: string
 
 }

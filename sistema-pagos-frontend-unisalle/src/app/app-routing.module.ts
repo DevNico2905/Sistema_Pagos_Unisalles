@@ -11,6 +11,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { AdminTemplateComponent } from './admin-template/admin-template.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AuthorizationGuard } from './guards/authorization.guard';
+import { EstudianteDetailsComponent } from './estudiante-details/estudiante-details.component';
+import { NewPagoComponent } from './new-pago/new-pago.component';
 
 const routes: Routes = [
   {path: "", component:LoginComponent},
@@ -24,7 +26,9 @@ const routes: Routes = [
     {path:"loadPagos", component:LoadPagosComponent, canActivate:[AuthorizationGuard], data:{roles:['ADMIN']}},
     {path:"dashboard", component:DashboardComponent},
     {path:"estudiantes", component:EstudiantesComponent},
-    {path:"pagos", component:PagosComponent}
+    {path:"pagos", component:PagosComponent},
+    {path: "estudiante-detalles/:codigo", component:EstudianteDetailsComponent},
+    {path: "new-pago/:codigoEstudiante", component:NewPagoComponent}
   ]},
 ];
 

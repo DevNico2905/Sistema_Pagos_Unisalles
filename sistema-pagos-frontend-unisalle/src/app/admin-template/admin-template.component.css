@@ -1,0 +1,20 @@
+#menu-bar {
+  background-color: #07346c !important;
+  color: white !important;
+}
+
+.toolbar-element{
+    color: white !important;
+}
+
+#exit-button, .dashboard-icon, .mat-list-item {
+    color: #07346c;
+}
+
+.mat-drawer-container{
+    display: inline;
+}
+
+#exit-button[_ngcontent-ng-c656892347], .dashboard-icon[_ngcontent-ng-c656892347], .mat-list-item[_ngcontent-ng-c656892347] {
+    color: #07346c;
+}

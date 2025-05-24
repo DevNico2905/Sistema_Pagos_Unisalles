@@ -9,7 +9,7 @@ import { environment } from '../../environments/environment.development';
 })
 export class EstudiantesService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   public getAllPagos(): Observable<Array<Pago>> {
     return this.http.get<Array<Pago>>(`${environment.backendHost}/pagos`);

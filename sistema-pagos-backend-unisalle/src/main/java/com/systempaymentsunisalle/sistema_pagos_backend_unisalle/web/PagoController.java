@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -98,15 +99,17 @@ public class PagoController {
     }
 
     //Método para registrar un pago con un archivo adjunto(comprobante de pago)
-    @PostMapping(path = "/pagos", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+   @PostMapping(path = "/pagos", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public Pago guardarPago(
         @RequestParam("file") MultipartFile file,
-        double cantidad,
-        TypePago type,
-        LocalDate date,
-        String codigoEstudiante) throws IOException {
-            return pagoService.savePago(file, cantidad, type, date, codigoEstudiante);
+        @RequestParam("cantidad") double cantidad,
+        @RequestParam("type") TypePago type,
+        @RequestParam("fecha") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
+        @RequestParam("codigoEstudiante") String codigoEstudiante) throws IOException {
+        
+        return pagoService.savePago(file, cantidad, type, date, codigoEstudiante);
     }
+
 
     @PostMapping("/agregarEstudiante")
     public ResponseEntity<Estudiante> agregarEstudiante(@RequestBody Estudiante estudiante) {

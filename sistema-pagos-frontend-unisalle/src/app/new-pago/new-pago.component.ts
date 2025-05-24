@@ -54,8 +54,9 @@ export class NewPagoComponent implements OnInit{
   }
 
   guardarPago(){
-    let fecha:Date = new Date(this.pagoFormGroup.value.date);
-    let formattedDate = fecha.getDate()+"/"+(fecha.getMonth()+1)+'/'+fecha.getFullYear(); //DD/MM/YYYY
+    let fecha: Date = new Date(this.pagoFormGroup.value.fecha);
+    let formattedDate = fecha.toISOString().split('T')[0]; // Formato: YYYY-MM-DD
+
 
     let formData = new FormData();
     formData.set('fecha',formattedDate);
@@ -82,5 +83,8 @@ export class NewPagoComponent implements OnInit{
         });
       }
     })
+    console.log(fecha);
+    console.log(formattedDate);
+    console.log(fecha.getDate()+"/"+(fecha.getMonth()+1)+'/'+fecha.getFullYear());
   }
 }

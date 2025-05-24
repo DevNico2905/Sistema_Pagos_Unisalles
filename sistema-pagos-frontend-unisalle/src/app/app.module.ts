@@ -31,6 +31,9 @@ import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { EstudianteDetailsComponent } from './estudiante-details/estudiante-details.component';
 import { NewPagoComponent } from './new-pago/new-pago.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -63,7 +66,11 @@ import { NewPagoComponent } from './new-pago/new-pago.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
+    
   ],
   providers: [AuthGuard, AuthorizationGuard, provideHttpClient()],
   bootstrap: [AppComponent]

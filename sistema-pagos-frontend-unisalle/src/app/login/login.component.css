@@ -1,15 +1,35 @@
-mat-form-field{
+/* Fondo del contenedor */
+.container {
+  background-image: url('../../assets/UNISALLE-1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh; /* Altura completa de la ventana */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ya existentes, no se tocan */
+mat-form-field {
   display: block;
 }
 
-.login-form{
+.login-form {
   width: 400px;
-  flex: auto;
   align-content: center;
   margin: auto;
+  padding: 24px;
+  background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente */
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);  /* Sombra suave */
 }
 
-.align-end{
+.align-end {
   display: flex;
   justify-content: flex-end;
+}
+
+.Login-header {
+  padding-bottom: 16px;
 }

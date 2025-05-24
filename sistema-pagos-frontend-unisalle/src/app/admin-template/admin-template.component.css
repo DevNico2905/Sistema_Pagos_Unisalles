@@ -11,10 +11,49 @@
     color: #07346c;
 }
 
-.mat-drawer-container{
-    display: inline;
+.menu-icon {
+  font-size: 28px; /* tamaño del ícono */
 }
 
-#exit-button[_ngcontent-ng-c656892347], .dashboard-icon[_ngcontent-ng-c656892347], .mat-list-item[_ngcontent-ng-c656892347] {
-    color: #07346c;
+.menu-label {
+  font-size: 15px;
 }
+
+.menu-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo {
+  height: 40px; /* ajusta según tu necesidad */
+  margin-right: 12px;
+  vertical-align: middle;
+}
+
+
+.admin-container {
+  height: 100vh; /* Que todo el contenedor admin ocupe la pantalla */
+  display: flex;
+  flex-direction: column;
+}
+
+mat-drawer-container {
+  flex: 1; /* El drawer-container ocupará todo lo que queda tras el toolbar */
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+mat-drawer {
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.844);
+}
+
+mat-drawer-content {
+  flex: 1;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+

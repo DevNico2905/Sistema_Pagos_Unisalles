@@ -1,59 +1,71 @@
-<!--Barra de Menú Principal = "mat-toolbar" -->
-<mat-toolbar id="menu-bar">
-  <!--Botón de Menú-->
-  <button mat-button (click)="myDrawer.toggle()">
-    <mat-icon class="toolbar-element">menu</mat-icon>
-  </button>
+<div class="admin-container">
+  <!--Barra de Menú Principal = "mat-toolbar" -->
+  <mat-toolbar id="menu-bar">
+    <!--Botón de Menú-->
+    <button mat-button (click)="myDrawer.toggle()" class="menu-button">
+      <mat-icon class="toolbar-element menu-icon">menu_open</mat-icon>
+      <span class="mdc-button__label toolbar-element menu-label">Menu</span>
+    </button>
 
-  <span style="flex: auto;"></span>
+    <img src="assets/logoUnisalle.png"/>
 
-  <button mat-button class="toolbar-element" routerLink="/admin/home" >Home</button>
-  <button mat-button class="toolbar-element" routerLink="/admin/profile" >Perfil</button>
+    <span style="flex: auto;"></span>
 
-  <button *ngIf="authService.roles.includes('ADMIN')" mat-button [matMenuTriggerFor] = "importMenu" class="toolbar-element">
-    <mat-icon iconPositionEnd>keyboard_arrow_down></mat-icon>
-    Importar
-  </button>
+    <button mat-button class="toolbar-element" routerLink="/admin/home">Home</button>
+    <button mat-button class="toolbar-element" routerLink="/admin/profile">Perfil</button>
 
-  <mat-menu #importMenu>
-    <button mat-menu-item routerLink="/admin/loadEstudiantes" >Cargar Estudiantes</button>
-    <button mat-menu-item routerLink="/admin/loadPagos" >Cargar Pagos</button>
-  </mat-menu>
+  <!--
+    <button *ngIf="authService.roles.includes('ADMIN')" mat-button [matMenuTriggerFor] = "importMenu" class="toolbar-element">
+      <mat-icon iconPositionEnd>keyboard_arrow_down></mat-icon>
+      Importar
+    </button>
 
-  <button mat-button *ngIf="authService.isAuthenticated" class="toolbar-element">
-    {{ authService.username }}
-  </button>
+    <mat-menu #importMenu>
+      <button mat-menu-item routerLink="/admin/loadEstudiantes" >Cargar Estudiantes</button>
+      <button mat-menu-item routerLink="/admin/loadPagos" >Cargar Pagos</button>
+    </mat-menu>
+    -->
+    <button mat-button *ngIf="authService.isAuthenticated" class="toolbar-element">
+      <mat-icon>account_circle</mat-icon>
+      {{ authService.username }}
+    </button>
 
 
-  <button mat-raised-button id="exit-button" (click) = "logout()">Salir</button>
-</mat-toolbar>
+    <button mat-raised-button id="exit-button" (click) = "logout()">
+      <mat-icon>logout</mat-icon>
+      Salir
+    </button>
+  </mat-toolbar>
 
-<mat-drawer-container>
-  <mat-drawer #myDrawer opened="true" mode="side" position="start">
-    <mat-list>
-      <mat-list-item>
-        <button mat-button routerLink="/admin/dashboard" class="mat-list-item">
-          <mat-icon class="dashboard-icon">dashboard</mat-icon>
-          Dashboard
-        </button>
-      </mat-list-item>
-      <mat-list-item>
-        <button mat-button routerLink="/admin/estudiantes" class="mat-list-item">
-          <mat-icon class="dashboard-icon">dashboard</mat-icon>
-          Estudiantes
-        </button>
-      </mat-list-item>
-      <mat-list-item>
-        <button mat-button routerLink="/admin/pagos" class="mat-list-item">
-          <mat-icon class="dashboard-icon">dashboard</mat-icon>
-          Pagos
-        </button>
-      </mat-list-item>
-    </mat-list>
-  </mat-drawer>
-  <mat-drawer-content>
-    <div style="min-height: 600px;">
-      <router-outlet></router-outlet>
-    </div>
-  </mat-drawer-content>
-</mat-drawer-container>
+  <mat-drawer-container>
+    <mat-drawer #myDrawer [opened]="true" mode="side" position="start">
+      <mat-list>
+        <!--
+        <mat-list-item>
+          <button mat-button routerLink="/admin/dashboard" class="mat-list-item">
+            <mat-icon class="dashboard-icon">dashboard</mat-icon>
+            Dashboard
+          </button>
+        </mat-list-item>
+        -->
+        <mat-list-item>
+          <button mat-button routerLink="/admin/estudiantes" class="mat-list-item">
+            <mat-icon class="dashboard-icon">dashboard</mat-icon>
+            Estudiantes
+          </button>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-button routerLink="/admin/pagos" class="mat-list-item">
+            <mat-icon class="dashboard-icon">dashboard</mat-icon>
+            Pagos
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </mat-drawer>
+    <mat-drawer-content>
+      <div style="min-height: 600px;">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

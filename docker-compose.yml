@@ -1,0 +1,55 @@
+# =====================================================
+# Sistema de Pagos Académicos - Unisalle
+# Arquitectura SOA - Despliegue con Docker Compose
+# =====================================================
+
+services:
+
+  # ===== Capa de Datos: PostgreSQL =====
+  postgres:
+    image: postgres:16-alpine
+    container_name: pagos-db
+    environment:
+      POSTGRES_DB: pagos_universidad
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: DataBase0503*
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # ===== Capa de Servicios SOA: Backend Spring Boot =====
+  backend:
+    build:
+      context: ./sistema-pagos-backend-unisalle
+      dockerfile: Dockerfile
+    container_name: pagos-backend
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/pagos_universidad
+      DB_USERNAME: postgres
+      DB_PASSWORD: DataBase0503*
+      DDL_AUTO: update
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # ===== Capa de Consumidores: Frontend Angular =====
+  frontend:
+    build:
+      context: ./sistema-pagos-frontend-unisalle
+      dockerfile: Dockerfile
+    container_name: pagos-frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:

@@ -1,10 +1,7 @@
-# =====================================================
 # Sistema de Pagos Académicos - Unisalle
 # Arquitectura SOA - Despliegue con Docker Compose
 # =====================================================
-
 services:
-
   # ===== Capa de Datos: PostgreSQL =====
   postgres:
     image: postgres:16-alpine

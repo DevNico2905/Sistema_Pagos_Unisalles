@@ -26,6 +26,10 @@ public class SistemaPagosBackendUnisalleApplication {
 	@Bean
 	CommandLineRunner commandLineRunner(EstudianteRepository estudianteRepository, PagoRepository pagoRepository) {
 		return args -> {
+
+			if (estudianteRepository.count() > 0)
+				return;
+
 			estudianteRepository.save(Estudiante.builder()
 					.id(UUID.randomUUID().toString())
 					.nombre("Nicolas")
@@ -67,7 +71,7 @@ public class SistemaPagosBackendUnisalleApplication {
 							.fecha(LocalDate.now())
 							.estudiante(estudiante)
 							.build();
-							
+
 					pagoRepository.save(pago);
 				}
 			});
